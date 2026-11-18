@@ -132,7 +132,7 @@ export default function App() {
       {result && <LiveJobs result={result} />}
 
       <footer className="foot">
-        Mini project, Dept. of CSE (Data Science), Sir MVIT. Scores are guidance, not a guarantee.
+        Mini project, Dept. of CSE , Sir MVIT .
       </footer>
     </div>
   )
