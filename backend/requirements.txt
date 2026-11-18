@@ -6,3 +6,6 @@ python-docx
 scikit-learn
 pytest
 httpx
+beautifulsoup4
+pytest-asyncio
+lxml

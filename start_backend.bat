@@ -22,9 +22,21 @@ if not defined PY (
 if not exist venv\Scripts\python.exe (
   echo Creating virtual environment...
   %PY% -m venv venv || goto :fail
-  echo Installing packages, this takes a minute the first time...
   venv\Scripts\python.exe -m pip install --upgrade pip
+)
+
+rem --- install packages on first run, and again whenever requirements.txt changes ---
+set REQHASH=
+set OLDHASH=
+for /f %%h in ('venv\Scripts\python.exe -c "import hashlib;print(hashlib.sha256(open('requirements.txt','rb').read()).hexdigest())"') do set REQHASH=%%h
+if exist venv\.req_hash set /p OLDHASH=<venv\.req_hash
+rem an empty hash (command failed) always counts as "changed", so packages still get installed
+set NEEDINSTALL=1
+if not "%REQHASH%"=="" if "%REQHASH%"=="%OLDHASH%" set NEEDINSTALL=
+if defined NEEDINSTALL (
+  echo Installing packages, this takes a minute the first time...
   venv\Scripts\python.exe -m pip install -r requirements.txt || goto :fail
+  if not "%REQHASH%"=="" >venv\.req_hash echo %REQHASH%
 )
 
 echo.

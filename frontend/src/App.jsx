@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { analyzeFile, analyzeSample, listSamples } from './api.js'
 import { Profile, RoleCard, SkillList } from './components.jsx'
+import LiveJobs from './LiveJobs.jsx'
 
 const LANES = [
   { key: 'recommended', label: 'Apply', tone: 'apply',
@@ -121,6 +122,8 @@ export default function App() {
           </section>
         </main>
       )}
+
+      {result && <LiveJobs result={result} />}
 
       <footer className="foot">
         Mini project, Dept. of CSE (Data Science), Sir MVIT. Scores are guidance, not a guarantee.

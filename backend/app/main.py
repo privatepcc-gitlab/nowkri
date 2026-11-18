@@ -8,11 +8,13 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import BackgroundTasks, FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
+from .jobs.search import SearchManager, SearchRequest
+from .jobs.store import JobCache
 from .matcher import RECOMMEND_THRESHOLD, STRETCH_THRESHOLD, RoleMatcher
 from .parser import extract_text, parse_resume
 from .skills import SkillExtractor
@@ -21,6 +23,7 @@ MAX_BYTES = 5 * 1024 * 1024
 ROOT = Path(__file__).resolve().parents[2]
 SAMPLES_DIR = ROOT / "samples"
 FRONTEND_DIST = ROOT / "frontend" / "dist"
+DATA_DIR = Path(__file__).parent / "data"
 
 app = FastAPI(title="Job Hunt API", version="1.0.0",
               description="Upload a resume, get job titles that match your skills and skill levels.")
@@ -28,6 +31,7 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], all
 
 extractor = SkillExtractor()
 matcher = RoleMatcher()
+search_manager = SearchManager(JobCache(DATA_DIR / "cache" / "jobs.sqlite"))
 
 
 class TextIn(BaseModel):
@@ -100,6 +104,24 @@ async def analyze(file: UploadFile = File(...)):
 @app.post("/api/analyze-text")
 def analyze_plain(body: TextIn):
     return analyze_text(body.text)
+
+
+@app.post("/api/jobs/search")
+def start_job_search(body: SearchRequest, background: BackgroundTasks):
+    """Start a live search on the job sites. Poll GET /api/jobs/search/{id} for results."""
+    if not body.titles and not body.skills:
+        raise HTTPException(422, "Send at least one job title or skill to search for.")
+    sid = search_manager.start(body)
+    background.add_task(search_manager.run, sid)
+    return {"search_id": sid}
+
+
+@app.get("/api/jobs/search/{search_id}")
+def get_job_search(search_id: str):
+    s = search_manager.get(search_id)
+    if s is None:
+        raise HTTPException(404, "Search not found (it may have expired). Start a new one.")
+    return s
 
 
 # Serve the built React app (frontend/dist) at "/" so the whole project runs
