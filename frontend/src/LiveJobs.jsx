@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { getJobSearch, startJobSearch } from './api.js'
 
 const POLL_MS = 2000
+const PAGE = 10 // jobs shown before "See more"
 const VERDICTS = [
   { key: 'APPLY', label: 'Apply', tone: 'apply' },
   { key: 'ALMOST', label: 'Almost there', tone: 'almost' },
   { key: 'SKIP', label: 'Skip', tone: 'skip' },
 ]
-const SITE_NAMES = { internshala: 'Internshala', shine: 'Shine', apna: 'Apna', naukri: 'Naukri' }
-const siteName = (s) => SITE_NAMES[s] || s
 
 function buildRequest(result, location) {
   return {
@@ -17,19 +16,6 @@ function buildRequest(result, location) {
     experience_years: result.profile.experience_years || 0,
     location: location.trim(),
   }
-}
-
-function SiteChip({ site }) {
-  const busy = site.state === 'pending' || site.state === 'running'
-  const bad = site.state === 'failed' || site.state === 'blocked'
-  const text = busy ? 'searching…' : bad ? 'unavailable' : `${site.count} job${site.count === 1 ? '' : 's'}`
-  return (
-    <li className={`site-chip ${busy ? 'busy' : ''} ${bad ? 'bad' : ''}`} title={site.message || undefined}>
-      {busy && <span className="spinner" aria-hidden="true" />}
-      <b>{siteName(site.source)}</b> <span>{text}</span>
-      {bad && site.message && <span className="site-msg">{site.message}</span>}
-    </li>
-  )
 }
 
 function JobCard({ job }) {
@@ -56,10 +42,7 @@ function JobCard({ job }) {
           <p key={r} className="tiny muted">{r}</p>
         ))}
         <div className="job-foot">
-          <span className="tiny muted">
-            {job.is_internship ? 'Internship on ' : 'On '}{siteName(job.source)}
-            {job.also_on.length > 0 && `, also on ${job.also_on.map(siteName).join(', ')}`}
-          </span>
+          <span className="tiny muted">{job.is_internship ? 'Internship' : ''}</span>
           <a className="open-link" href={job.url} target="_blank" rel="noopener noreferrer">
             Open posting<span className="sr-only"> (opens in a new tab)</span> ↗
           </a>
@@ -74,9 +57,11 @@ export default function LiveJobs({ result }) {
   const [search, setSearch] = useState(null)
   const [error, setError] = useState('')
   const [verdict, setVerdict] = useState('ALL')
-  const [source, setSource] = useState('ALL')
   const [internOnly, setInternOnly] = useState(false)
   const [starting, setStarting] = useState(false)
+  const [limit, setLimit] = useState(PAGE)
+  // changing a filter or the resume starts the list from the top again
+  useEffect(() => { setLimit(PAGE) }, [verdict, internOnly, result])
   const timer = useRef(null)
   const token = useRef(0) // bumped for every new search; responses for an older one are ignored
 
@@ -90,7 +75,7 @@ export default function LiveJobs({ result }) {
     if (starting) return
     const mine = ++token.current
     const current = () => mine === token.current
-    stop(); setError(''); setVerdict('ALL'); setSource('ALL'); setInternOnly(false)
+    stop(); setError(''); setVerdict('ALL'); setInternOnly(false); setLimit(PAGE)
     setStarting(true)
     setSearch({ state: 'running', sites: [], jobs: [] })
     try {
@@ -122,10 +107,8 @@ export default function LiveJobs({ result }) {
   const running = starting || search?.state === 'running'
   const jobs = search?.jobs || []
   const shown = jobs.filter((j) => (verdict === 'ALL' || j.verdict === verdict)
-    && (source === 'ALL' || j.source === source || j.also_on.includes(source))
     && (!internOnly || j.is_internship))
   const count = (k) => jobs.filter((j) => j.verdict === k).length
-  const sources = [...new Set(jobs.flatMap((j) => [j.source, ...j.also_on]))]
 
   return (
     <section className="live" aria-labelledby="live-title">
@@ -133,7 +116,7 @@ export default function LiveJobs({ result }) {
         <div>
           <h2 id="live-title">Live jobs</h2>
           <p className="muted">
-            Search Internshala, Shine and Apna for current postings that fit this resume. Takes about a minute.
+            Current job and internship postings that fit this resume. Takes about a minute.
           </p>
         </div>
         <form className="live-form" onSubmit={(e) => { e.preventDefault(); find() }}>
@@ -151,10 +134,11 @@ export default function LiveJobs({ result }) {
       {search && (
         <>
           {search.cached && <p className="tiny muted">Showing results saved from a search in the last 6 hours.</p>}
-          {search.sites.length > 0 && (
-            <ul className="site-chips" aria-live="polite">
-              {search.sites.map((s) => <SiteChip key={s.source} site={s} />)}
-            </ul>
+          {running && (
+            <p className="search-status tiny muted" role="status">
+              <span className="spinner" aria-hidden="true" />
+              Searching for jobs…{jobs.length > 0 && ` ${jobs.length} found so far`}
+            </p>
           )}
 
           {jobs.length > 0 && (
@@ -169,28 +153,40 @@ export default function LiveJobs({ result }) {
                 ))}
               </div>
               <div className="filter-row">
-                <label>Site{' '}
-                  <select value={source} onChange={(e) => setSource(e.target.value)}>
-                    <option value="ALL">All sites</option>
-                    {sources.map((s) => <option key={s} value={s}>{siteName(s)}</option>)}
-                  </select>
-                </label>
                 <label className="check">
                   <input type="checkbox" checked={internOnly} onChange={(e) => setInternOnly(e.target.checked)} />
                   Internships only
                 </label>
-                <span className="tiny muted">{shown.length} of {jobs.length} shown</span>
+                <span className="tiny muted">
+                  Showing {Math.min(limit, shown.length)} of {shown.length}
+                  {shown.length < jobs.length && ` (${jobs.length} total)`}
+                </span>
               </div>
             </div>
           )}
 
           {shown.length > 0 ? (
-            <div className="role-list">{shown.map((j) => <JobCard key={`${j.source}-${j.source_id}`} job={j} />)}</div>
+            <>
+              <div className="role-list">
+                {shown.slice(0, limit).map((j) => <JobCard key={`${j.source}-${j.source_id}`} job={j} />)}
+              </div>
+              {shown.length > limit && (
+                <div className="see-more">
+                  <button className="see-more-btn" onClick={() => setLimit(limit + PAGE)}>
+                    See more jobs
+                    <span className="muted"> ({shown.length - limit} more)</span>
+                  </button>
+                </div>
+              )}
+              {limit > PAGE && shown.length <= limit && shown.length > PAGE && (
+                <p className="see-more tiny muted">You have seen all {shown.length} jobs.</p>
+              )}
+            </>
           ) : !running && (
             <div className="empty">
               {jobs.length
                 ? 'No postings match these filters.'
-                : 'No postings found. Try another city, or check the site statuses above.'}
+                : 'No postings found. Try another city.'}
             </div>
           )}
         </>

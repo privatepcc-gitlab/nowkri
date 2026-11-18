@@ -175,7 +175,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .site-msg { flex-basis: 100%; font-size: 12.5px; color: var(--ink-soft); max-width: 46ch; }
 .spinner { width: 12px; height: 12px; border: 2px solid var(--line); border-top-color: var(--apply); border-radius: 50%; animation: spin .8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
+.search-status { display: flex; align-items: center; gap: 8px; min-height: 20px; margin: 0 0 12px; }
 .job-filters { margin-bottom: 16px; }
+.see-more { display: flex; justify-content: center; margin: 16px 0 0; }
+.see-more-btn { min-height: 44px; padding: 10px 28px; border: 1px solid var(--ink); border-radius: 999px; background: var(--paper); font-weight: 600; transition: background .15s, color .15s; }
+.see-more-btn:hover { background: var(--ink); color: #fff; }
+.see-more-btn:hover .muted { color: #cfd6e2; }
 .filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 12px; font-size: 14px; }
 .filter-row select { font: inherit; padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); }
 .filter-row .check { display: flex; align-items: center; gap: 6px; }
