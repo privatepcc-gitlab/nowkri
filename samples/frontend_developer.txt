@@ -1,0 +1,24 @@
+Arjun Menon
+arjun.menon@example.com | 9123456780
+
+Professional Summary
+Frontend developer with 2 years of experience building responsive web apps.
+
+Skills
+Languages: JavaScript, TypeScript, HTML5, CSS3
+Frameworks: React, Redux, Next.js, Tailwind CSS
+Tools: Git, Figma, Jest, Postman
+Basic knowledge of Node.js and MongoDB
+
+Work Experience
+Frontend Developer, PixelCraft Studio, Jul 2023 - Aug 2025
+- Built a React and TypeScript dashboard with Redux; improved load time by 35%
+- Converted Figma designs into reusable components with Tailwind CSS
+- Wrote unit tests with Jest; integrated REST APIs
+
+Projects
+Portfolio Builder - Next.js, TypeScript, Tailwind CSS
+Movie Finder - React, JavaScript, REST API
+
+Education
+B.Tech in Information Science, RV College of Engineering, 2019 - 2023

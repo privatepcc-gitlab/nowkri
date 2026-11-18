@@ -1,0 +1,394 @@
+{
+  "_comment": "Job role knowledge base. Skill levels: 1 Beginner, 2 Intermediate, 3 Advanced, 4 Expert. A must_have entry is met when ANY skill in 'skills' reaches 'min_level'. min_years is total professional/internship experience.",
+  "roles": [
+    {
+      "title": "Python Developer (Entry Level)", "family": "Software Engineering", "min_years": 0,
+      "description": "Write backend services and scripts in Python, build REST APIs with Django, Flask or FastAPI, work with SQL databases and version control.",
+      "must_have": [
+        {"skills": ["Python"], "min_level": 2},
+        {"skills": ["Django", "Flask", "FastAPI"], "min_level": 1},
+        {"skills": ["SQL", "MySQL", "PostgreSQL", "MongoDB", "SQLite"], "min_level": 1}
+      ],
+      "good_to_have": ["REST APIs", "Git", "Docker", "Unit Testing", "Linux", "OOP", "Data Structures & Algorithms"]
+    },
+    {
+      "title": "Java Backend Developer (Entry Level)", "family": "Software Engineering", "min_years": 0,
+      "description": "Develop server-side applications in Java using Spring Boot, design REST APIs, and work with relational databases.",
+      "must_have": [
+        {"skills": ["Java"], "min_level": 2},
+        {"skills": ["Spring Boot"], "min_level": 1},
+        {"skills": ["SQL", "MySQL", "PostgreSQL", "Oracle DB"], "min_level": 1}
+      ],
+      "good_to_have": ["Hibernate", "REST APIs", "Microservices", "Git", "OOP", "Unit Testing", "Data Structures & Algorithms"]
+    },
+    {
+      "title": "Software Development Engineer (SDE-1)", "family": "Software Engineering", "min_years": 0,
+      "description": "Solve problems with strong data structures and algorithms, write clean object-oriented code in a mainstream language, and ship features in a product team.",
+      "must_have": [
+        {"skills": ["Data Structures & Algorithms"], "min_level": 2},
+        {"skills": ["Java", "C++", "Python", "Go", "C#"], "min_level": 2},
+        {"skills": ["OOP"], "min_level": 1}
+      ],
+      "good_to_have": ["Git", "SQL", "Operating Systems", "System Design", "REST APIs", "Unit Testing"]
+    },
+    {
+      "title": "Frontend Developer", "family": "Web Development", "min_years": 0,
+      "description": "Build responsive user interfaces with HTML, CSS and JavaScript using React, Angular or Vue, and integrate with REST APIs.",
+      "must_have": [
+        {"skills": ["HTML"], "min_level": 2},
+        {"skills": ["CSS", "Tailwind CSS", "Bootstrap"], "min_level": 2},
+        {"skills": ["JavaScript", "TypeScript"], "min_level": 2},
+        {"skills": ["React", "Angular", "Vue.js", "Next.js"], "min_level": 2}
+      ],
+      "good_to_have": ["TypeScript", "Redux", "Next.js", "Git", "REST APIs", "Figma", "Unit Testing"]
+    },
+    {
+      "title": "Full Stack Developer (MERN)", "family": "Web Development", "min_years": 0,
+      "description": "Build complete web applications with MongoDB, Express, React and Node.js, from database to user interface.",
+      "must_have": [
+        {"skills": ["JavaScript", "TypeScript"], "min_level": 2},
+        {"skills": ["React", "Next.js"], "min_level": 2},
+        {"skills": ["Node.js", "Express.js"], "min_level": 2},
+        {"skills": ["MongoDB", "MySQL", "PostgreSQL"], "min_level": 1}
+      ],
+      "good_to_have": ["Express.js", "REST APIs", "Git", "HTML", "CSS", "Docker", "Redux", "AWS"]
+    },
+    {
+      "title": "Full Stack Developer (Python)", "family": "Web Development", "min_years": 0,
+      "description": "Build web products end to end with a Python backend (Django, Flask or FastAPI) and a modern JavaScript frontend.",
+      "must_have": [
+        {"skills": ["Python"], "min_level": 2},
+        {"skills": ["Django", "Flask", "FastAPI"], "min_level": 2},
+        {"skills": ["React", "Angular", "Vue.js", "Next.js"], "min_level": 1},
+        {"skills": ["SQL", "MySQL", "PostgreSQL", "MongoDB", "SQLite"], "min_level": 1}
+      ],
+      "good_to_have": ["JavaScript", "HTML", "CSS", "REST APIs", "Git", "Docker"]
+    },
+    {
+      "title": "PHP / Laravel Developer", "family": "Web Development", "min_years": 0,
+      "description": "Develop and maintain web applications using PHP and Laravel with MySQL databases.",
+      "must_have": [
+        {"skills": ["PHP"], "min_level": 2},
+        {"skills": ["MySQL", "SQL"], "min_level": 1}
+      ],
+      "good_to_have": ["Laravel", "HTML", "CSS", "JavaScript", "Git", "REST APIs"]
+    },
+    {
+      "title": "Data Analyst", "family": "Data & Analytics", "min_years": 0,
+      "description": "Clean and analyse data with SQL, Excel and Python, build dashboards in Power BI or Tableau, and communicate insights to stakeholders.",
+      "must_have": [
+        {"skills": ["SQL", "MySQL", "PostgreSQL"], "min_level": 2},
+        {"skills": ["Excel", "Python", "R"], "min_level": 2},
+        {"skills": ["Power BI", "Tableau", "Data Visualization", "Matplotlib"], "min_level": 1}
+      ],
+      "good_to_have": ["Pandas", "Statistics", "Data Cleaning", "Power BI", "Tableau", "Communication"]
+    },
+    {
+      "title": "Business Intelligence (BI) Developer", "family": "Data & Analytics", "min_years": 0,
+      "description": "Design data models and interactive dashboards in Power BI or Tableau on top of SQL data warehouses.",
+      "must_have": [
+        {"skills": ["Power BI", "Tableau"], "min_level": 2},
+        {"skills": ["SQL", "MySQL", "PostgreSQL"], "min_level": 2}
+      ],
+      "good_to_have": ["Data Warehousing", "ETL", "Excel", "Data Visualization", "Snowflake"]
+    },
+    {
+      "title": "Data Scientist (Entry Level)", "family": "Data & Analytics", "min_years": 0,
+      "description": "Build and evaluate machine learning models in Python using pandas and scikit-learn, perform statistical analysis and exploratory data analysis.",
+      "must_have": [
+        {"skills": ["Python", "R"], "min_level": 2},
+        {"skills": ["Machine Learning"], "min_level": 2},
+        {"skills": ["Pandas", "NumPy"], "min_level": 2},
+        {"skills": ["Statistics"], "min_level": 1}
+      ],
+      "good_to_have": ["Scikit-learn", "SQL", "Data Visualization", "Feature Engineering", "Deep Learning", "Data Cleaning", "Matplotlib"]
+    },
+    {
+      "title": "Machine Learning Engineer", "family": "AI/ML", "min_years": 0,
+      "description": "Train, optimise and deploy machine learning models to production using Python, PyTorch or TensorFlow, APIs and containers.",
+      "must_have": [
+        {"skills": ["Python"], "min_level": 3},
+        {"skills": ["Machine Learning"], "min_level": 2},
+        {"skills": ["PyTorch", "TensorFlow", "Scikit-learn"], "min_level": 2},
+        {"skills": ["Model Deployment", "FastAPI", "Flask", "Docker"], "min_level": 1}
+      ],
+      "good_to_have": ["Deep Learning", "Docker", "MLOps", "AWS", "Git", "SQL", "Data Structures & Algorithms"]
+    },
+    {
+      "title": "Deep Learning / Computer Vision Engineer", "family": "AI/ML", "min_years": 0,
+      "description": "Build image and video models such as classification and object detection using CNNs, OpenCV and PyTorch or TensorFlow.",
+      "must_have": [
+        {"skills": ["Python"], "min_level": 2},
+        {"skills": ["Deep Learning"], "min_level": 2},
+        {"skills": ["Computer Vision"], "min_level": 2},
+        {"skills": ["PyTorch", "TensorFlow"], "min_level": 2}
+      ],
+      "good_to_have": ["NumPy", "Model Deployment", "Docker", "C++", "Git"]
+    },
+    {
+      "title": "NLP / GenAI Engineer", "family": "AI/ML", "min_years": 0,
+      "description": "Build language applications with transformers and large language models: text classification, retrieval augmented generation, prompt engineering and fine-tuning.",
+      "must_have": [
+        {"skills": ["Python"], "min_level": 2},
+        {"skills": ["NLP", "LLMs"], "min_level": 2},
+        {"skills": ["Machine Learning", "Deep Learning"], "min_level": 1}
+      ],
+      "good_to_have": ["LLMs", "PyTorch", "FastAPI", "Docker", "Model Deployment", "Git"]
+    },
+    {
+      "title": "Data Engineer", "family": "Data & Analytics", "min_years": 0,
+      "description": "Build reliable ETL data pipelines with SQL, Python and Spark, orchestrate with Airflow and load into data warehouses.",
+      "must_have": [
+        {"skills": ["SQL", "PostgreSQL", "MySQL"], "min_level": 3},
+        {"skills": ["Python", "Java"], "min_level": 2},
+        {"skills": ["ETL", "Apache Spark", "Airflow", "Data Warehousing"], "min_level": 2}
+      ],
+      "good_to_have": ["Apache Spark", "Airflow", "Apache Kafka", "AWS", "GCP", "Snowflake", "dbt", "Docker"]
+    },
+    {
+      "title": "MLOps Engineer", "family": "AI/ML", "min_years": 1,
+      "description": "Automate the machine learning lifecycle: model versioning, CI/CD for models, containerised serving and monitoring on cloud.",
+      "must_have": [
+        {"skills": ["Python"], "min_level": 2},
+        {"skills": ["Docker", "Kubernetes"], "min_level": 2},
+        {"skills": ["MLOps", "Model Deployment"], "min_level": 2},
+        {"skills": ["CI/CD"], "min_level": 1}
+      ],
+      "good_to_have": ["Kubernetes", "AWS", "GCP", "Azure", "Monitoring", "Machine Learning", "Terraform"]
+    },
+    {
+      "title": "DevOps Engineer", "family": "Cloud & DevOps", "min_years": 0,
+      "description": "Automate build and deployment with CI/CD pipelines, Docker and Kubernetes, manage Linux servers and cloud infrastructure as code.",
+      "must_have": [
+        {"skills": ["Linux"], "min_level": 2},
+        {"skills": ["Docker"], "min_level": 2},
+        {"skills": ["CI/CD"], "min_level": 2},
+        {"skills": ["AWS", "Azure", "GCP"], "min_level": 1}
+      ],
+      "good_to_have": ["Kubernetes", "Terraform", "Bash", "Python", "Monitoring", "Git", "Nginx"]
+    },
+    {
+      "title": "Cloud Engineer", "family": "Cloud & DevOps", "min_years": 0,
+      "description": "Design, deploy and manage applications on AWS, Azure or GCP: compute, storage, networking and security.",
+      "must_have": [
+        {"skills": ["AWS", "Azure", "GCP"], "min_level": 2},
+        {"skills": ["Linux"], "min_level": 1},
+        {"skills": ["Networking"], "min_level": 1}
+      ],
+      "good_to_have": ["Terraform", "Docker", "Kubernetes", "Python", "Bash", "Monitoring"]
+    },
+    {
+      "title": "Site Reliability Engineer (SRE)", "family": "Cloud & DevOps", "min_years": 3,
+      "description": "Own reliability of large production systems: monitoring, incident response, automation, capacity planning and Kubernetes.",
+      "must_have": [
+        {"skills": ["Linux"], "min_level": 3},
+        {"skills": ["Kubernetes"], "min_level": 2},
+        {"skills": ["Monitoring"], "min_level": 2},
+        {"skills": ["Python", "Go", "Bash"], "min_level": 2}
+      ],
+      "good_to_have": ["Terraform", "AWS", "GCP", "System Design", "CI/CD", "Networking"]
+    },
+    {
+      "title": "Android Developer", "family": "Mobile Development", "min_years": 0,
+      "description": "Build native Android apps in Kotlin or Java with Android Studio, Jetpack and REST API integration.",
+      "must_have": [
+        {"skills": ["Kotlin", "Java"], "min_level": 2},
+        {"skills": ["Android"], "min_level": 2}
+      ],
+      "good_to_have": ["Firebase", "REST APIs", "Git", "SQLite", "OOP"]
+    },
+    {
+      "title": "iOS Developer", "family": "Mobile Development", "min_years": 0,
+      "description": "Build native iOS apps in Swift with SwiftUI or UIKit using Xcode.",
+      "must_have": [
+        {"skills": ["Swift"], "min_level": 2},
+        {"skills": ["iOS"], "min_level": 2}
+      ],
+      "good_to_have": ["Firebase", "REST APIs", "Git", "OOP"]
+    },
+    {
+      "title": "Cross-Platform Mobile Developer (Flutter / React Native)", "family": "Mobile Development", "min_years": 0,
+      "description": "Build Android and iOS apps from a single codebase using Flutter with Dart or React Native with JavaScript.",
+      "must_have": [
+        {"skills": ["Flutter", "React Native"], "min_level": 2},
+        {"skills": ["Dart", "JavaScript", "TypeScript"], "min_level": 2}
+      ],
+      "good_to_have": ["Firebase", "REST APIs", "Git", "Android", "iOS"]
+    },
+    {
+      "title": "UI/UX Designer", "family": "Design", "min_years": 0,
+      "description": "Research users, create wireframes and high-fidelity prototypes in Figma, and design intuitive interfaces and design systems.",
+      "must_have": [
+        {"skills": ["Figma", "Adobe XD"], "min_level": 2},
+        {"skills": ["Wireframing"], "min_level": 2},
+        {"skills": ["UI Design", "UX Research"], "min_level": 1}
+      ],
+      "good_to_have": ["UX Research", "UI Design", "Photoshop", "HTML", "CSS", "Communication"]
+    },
+    {
+      "title": "QA / Manual Test Engineer", "family": "Quality Assurance", "min_years": 0,
+      "description": "Write test plans and test cases, execute manual and API tests, and track bugs through the release cycle.",
+      "must_have": [
+        {"skills": ["Manual Testing"], "min_level": 2},
+        {"skills": ["API Testing", "SQL", "Selenium"], "min_level": 1}
+      ],
+      "good_to_have": ["Selenium", "API Testing", "SQL", "Agile", "Automation Testing"]
+    },
+    {
+      "title": "QA Automation Engineer", "family": "Quality Assurance", "min_years": 0,
+      "description": "Build automated test suites with Selenium, Cypress or Playwright in Java or Python and run them in CI pipelines.",
+      "must_have": [
+        {"skills": ["Selenium", "Automation Testing"], "min_level": 2},
+        {"skills": ["Java", "Python", "JavaScript"], "min_level": 2},
+        {"skills": ["Unit Testing", "API Testing", "Manual Testing"], "min_level": 1}
+      ],
+      "good_to_have": ["CI/CD", "API Testing", "Git", "Agile", "SQL"]
+    },
+    {
+      "title": "Cybersecurity Analyst (SOC)", "family": "Security", "min_years": 0,
+      "description": "Monitor security events with SIEM tools, analyse threats, respond to incidents and harden networks.",
+      "must_have": [
+        {"skills": ["Networking"], "min_level": 2},
+        {"skills": ["Network Security", "SIEM", "Ethical Hacking"], "min_level": 2},
+        {"skills": ["Linux"], "min_level": 1}
+      ],
+      "good_to_have": ["SIEM", "Wireshark", "Python", "Cryptography", "Ethical Hacking"]
+    },
+    {
+      "title": "Penetration Tester", "family": "Security", "min_years": 1,
+      "description": "Perform vulnerability assessments and penetration tests on web apps and networks using Burp Suite, Metasploit and Kali Linux.",
+      "must_have": [
+        {"skills": ["Ethical Hacking"], "min_level": 3},
+        {"skills": ["Networking"], "min_level": 2},
+        {"skills": ["Linux"], "min_level": 2}
+      ],
+      "good_to_have": ["Python", "Bash", "Wireshark", "Network Security", "Cryptography"]
+    },
+    {
+      "title": "Network Engineer", "family": "Security", "min_years": 0,
+      "description": "Configure and troubleshoot routers, switches and firewalls; manage TCP/IP networks and VPNs.",
+      "must_have": [
+        {"skills": ["Networking"], "min_level": 2},
+        {"skills": ["Network Security", "Linux"], "min_level": 1}
+      ],
+      "good_to_have": ["Wireshark", "Linux", "Bash", "AWS"]
+    },
+    {
+      "title": "Database Administrator / SQL Developer", "family": "Data & Analytics", "min_years": 0,
+      "description": "Design schemas, write optimised SQL queries and stored procedures, and maintain relational databases.",
+      "must_have": [
+        {"skills": ["SQL"], "min_level": 3},
+        {"skills": ["MySQL", "PostgreSQL", "Oracle DB"], "min_level": 2},
+        {"skills": ["Database Design"], "min_level": 1}
+      ],
+      "good_to_have": ["Linux", "Data Warehousing", "Python", "ETL"]
+    },
+    {
+      "title": "Embedded Systems Engineer", "family": "Embedded & IoT", "min_years": 0,
+      "description": "Write firmware in Embedded C for microcontrollers, work with UART, SPI, I2C and real-time operating systems.",
+      "must_have": [
+        {"skills": ["Embedded C", "C"], "min_level": 2},
+        {"skills": ["Microcontrollers"], "min_level": 2},
+        {"skills": ["Communication Protocols", "RTOS"], "min_level": 1}
+      ],
+      "good_to_have": ["RTOS", "C++", "PCB Design", "IoT", "Linux"]
+    },
+    {
+      "title": "IoT Developer", "family": "Embedded & IoT", "min_years": 0,
+      "description": "Build connected devices with Arduino, ESP32 or Raspberry Pi, sensors, MQTT and cloud dashboards.",
+      "must_have": [
+        {"skills": ["Microcontrollers"], "min_level": 2},
+        {"skills": ["IoT"], "min_level": 2},
+        {"skills": ["C", "C++", "Python", "Embedded C"], "min_level": 1}
+      ],
+      "good_to_have": ["Communication Protocols", "AWS", "Firebase", "Linux", "PCB Design"]
+    },
+    {
+      "title": "Game Developer", "family": "Game Development", "min_years": 0,
+      "description": "Build 2D and 3D games in Unity with C# or Unreal Engine with C++.",
+      "must_have": [
+        {"skills": ["Unity", "Unreal Engine"], "min_level": 2},
+        {"skills": ["C#", "C++"], "min_level": 2}
+      ],
+      "good_to_have": ["OOP", "Git", "Data Structures & Algorithms", "Photoshop"]
+    },
+    {
+      "title": "Blockchain Developer", "family": "Web3", "min_years": 0,
+      "description": "Write and audit smart contracts in Solidity on Ethereum and build decentralised applications.",
+      "must_have": [
+        {"skills": ["Blockchain"], "min_level": 2},
+        {"skills": ["Solidity"], "min_level": 2},
+        {"skills": ["JavaScript", "TypeScript", "Rust"], "min_level": 1}
+      ],
+      "good_to_have": ["React", "Node.js", "Cryptography", "Git"]
+    },
+    {
+      "title": "Business Analyst", "family": "Business & Product", "min_years": 0,
+      "description": "Gather requirements, write user stories, map processes and analyse data with Excel and SQL to support decisions.",
+      "must_have": [
+        {"skills": ["Requirements Gathering", "Business Analysis"], "min_level": 2},
+        {"skills": ["Excel", "SQL"], "min_level": 2},
+        {"skills": ["Communication"], "min_level": 1}
+      ],
+      "good_to_have": ["Agile", "Power BI", "Tableau", "Data Visualization"]
+    },
+    {
+      "title": "Associate Product Manager", "family": "Business & Product", "min_years": 0,
+      "description": "Define product requirements, prioritise roadmaps, work with design and engineering in agile sprints, and use data to make decisions.",
+      "must_have": [
+        {"skills": ["Product Management"], "min_level": 2},
+        {"skills": ["Agile", "Requirements Gathering"], "min_level": 1},
+        {"skills": ["Communication", "Leadership"], "min_level": 1}
+      ],
+      "good_to_have": ["SQL", "Excel", "Figma", "Data Visualization", "UX Research"]
+    },
+    {
+      "title": "Salesforce Developer", "family": "Business & Product", "min_years": 0,
+      "description": "Customise Salesforce CRM with Apex, Lightning components and workflows.",
+      "must_have": [
+        {"skills": ["Salesforce"], "min_level": 2}
+      ],
+      "good_to_have": ["JavaScript", "SQL", "REST APIs"]
+    },
+    {
+      "title": "Digital Marketing Analyst", "family": "Business & Product", "min_years": 0,
+      "description": "Run SEO and social media campaigns, track performance in Google Analytics and report results.",
+      "must_have": [
+        {"skills": ["Digital Marketing"], "min_level": 2},
+        {"skills": ["Excel", "Data Visualization"], "min_level": 1}
+      ],
+      "good_to_have": ["Communication", "Photoshop", "SQL"]
+    },
+    {
+      "title": "Senior Software Engineer", "family": "Software Engineering", "min_years": 4,
+      "description": "Lead design of scalable services, mentor engineers and own system architecture across a product area.",
+      "must_have": [
+        {"skills": ["Java", "Python", "Go", "C++", "C#", "JavaScript", "TypeScript"], "min_level": 3},
+        {"skills": ["System Design"], "min_level": 3},
+        {"skills": ["Data Structures & Algorithms"], "min_level": 2}
+      ],
+      "good_to_have": ["Microservices", "Leadership", "AWS", "Docker", "Kubernetes", "CI/CD"]
+    },
+    {
+      "title": "Senior Data Scientist", "family": "Data & Analytics", "min_years": 4,
+      "description": "Lead end-to-end data science projects, set modelling strategy, mentor juniors and drive business impact with advanced machine learning.",
+      "must_have": [
+        {"skills": ["Python"], "min_level": 3},
+        {"skills": ["Machine Learning"], "min_level": 3},
+        {"skills": ["Statistics"], "min_level": 3},
+        {"skills": ["Deep Learning", "NLP", "Computer Vision", "Time Series"], "min_level": 2}
+      ],
+      "good_to_have": ["MLOps", "Leadership", "Apache Spark", "AWS", "SQL"]
+    },
+    {
+      "title": "Engineering Manager / Tech Lead", "family": "Software Engineering", "min_years": 6,
+      "description": "Manage an engineering team, own technical direction and delivery, hire and mentor engineers.",
+      "must_have": [
+        {"skills": ["Leadership"], "min_level": 3},
+        {"skills": ["System Design"], "min_level": 3},
+        {"skills": ["Agile"], "min_level": 2}
+      ],
+      "good_to_have": ["Communication", "Microservices", "Product Management"]
+    }
+  ]
+}

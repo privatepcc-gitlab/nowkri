@@ -1,0 +1,31 @@
+Riya Sharma
+riya.sharma@example.com | +91 9876543210 | Bengaluru
+
+Summary
+Final-year Data Science student who enjoys turning messy data into decisions.
+
+Education
+B.E. in Computer Science (Data Science), Sir M. Visvesvaraya Institute of Technology, 2023 - 2027, CGPA 8.7
+
+Technical Skills
+Proficient: Python, SQL, Pandas, NumPy
+Intermediate: Machine Learning, Scikit-learn, Power BI, Excel, Statistics
+Familiar with: Docker, TensorFlow, Git
+
+Experience
+Data Analyst Intern, Insightly Analytics, Jun 2025 - Aug 2025
+- Wrote SQL queries in PostgreSQL to build weekly sales reports for 40 stores
+- Cleaned and analysed 2M rows with Python and Pandas; built a Power BI dashboard used by the ops team
+- Ran hypothesis testing on promotions using statistics
+
+Projects
+Electricity Demand Forecasting
+- Time series forecasting with Python, Pandas and Scikit-learn (gradient boosting); EDA and feature engineering
+Customer Churn Prediction
+- Machine learning classification model with Scikit-learn and NumPy; served with Flask
+Olist E-commerce SQL Analytics
+- Advanced SQL analytics with window functions; Matplotlib charts
+
+Certifications
+Google Data Analytics Certificate (SQL, Excel, Tableau)
+IBM Machine Learning with Python

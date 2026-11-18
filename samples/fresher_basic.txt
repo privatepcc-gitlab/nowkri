@@ -1,0 +1,22 @@
+Kiran Gowda
+kiran.gowda@example.com | 9988776655
+
+Career Objective
+Motivated engineering student looking for an entry-level role in IT.
+
+Education
+B.E. Electronics and Communication, VTU, 2022 - 2026
+
+Skills
+C, Python (basic), HTML, Excel, MS Office
+Familiar with Arduino and Embedded C
+Communication, Teamwork
+
+Projects
+Smart Irrigation System
+- Arduino based soil moisture sensing with Embedded C; sends data over I2C
+Student Marks Calculator
+- Simple Python program to compute grades
+
+Certifications
+NPTEL - Introduction to Internet of Things
