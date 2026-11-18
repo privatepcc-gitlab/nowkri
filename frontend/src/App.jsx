@@ -95,10 +95,10 @@ export default function App() {
 
       {result && (
         <main className="results">
+          <SkillList skills={result.skills} />
           <aside className="side">
             <Profile profile={result.profile} source={fileName}
                      resumeText={result.resume_text} pdfUrl={pdfUrl} />
-            <SkillList skills={result.skills} />
           </aside>
 
           <section className="lanes">

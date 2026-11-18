@@ -82,12 +82,15 @@ export function SkillList({ skills }) {
   })
   const counts = [4, 3, 2, 1].map((lv) => ({ lv, n: skills.filter((s) => s.level === lv).length }))
   return (
-    <div className="panel skills">
-      <h3>Your skills <span className="muted">({skills.length})</span></h3>
-      <p className="tiny muted">
-        {counts.filter((c) => c.n).map((c) => `${c.n} ${LEVELS[c.lv - 1]}`).join(' · ')}
-        <span className="hint"> · hover a skill to see why</span>
-      </p>
+    <section className="panel skills" aria-label="Your skills">
+      <div className="skills-head">
+        <h3>Your skills <span className="muted">({skills.length})</span></h3>
+        <p className="tiny muted">
+          {counts.filter((c) => c.n).map((c) => `${c.n} ${LEVELS[c.lv - 1]}`).join(' · ')}
+          <span className="hint"> · hover a skill to see why</span>
+        </p>
+      </div>
+      <div className="skill-grid">
       {[...groups].filter(([, list]) => list.length).map(([label, list]) => (
         <div key={label} className="skill-group">
           <h4>{label}</h4>
@@ -101,7 +104,8 @@ export function SkillList({ skills }) {
           </ul>
         </div>
       ))}
-    </div>
+      </div>
+    </section>
   )
 }
 
