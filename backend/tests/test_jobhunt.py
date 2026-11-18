@@ -126,3 +126,9 @@ def test_api_upload_txt_and_reject_bad_type():
 
 def test_api_rejects_empty_resume():
     assert client.post("/api/analyze-text", json={"text": "hi"}).status_code == 422
+
+
+def test_app_page_is_never_served_stale():
+    r = client.get("/")
+    if r.status_code == 200:  # only when frontend/dist exists
+        assert "no-cache" in r.headers.get("cache-control", "")

@@ -29,6 +29,16 @@ app = FastAPI(title="Job Hunt API", version="1.0.0",
               description="Upload a resume, get job titles that match your skills and skill levels.")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
+
+@app.middleware("http")
+async def no_stale_app_page(request, call_next):
+    """The built JS/CSS files have content hashes in their names, but index.html
+    does not: tell browsers to recheck it, so a rebuilt frontend shows up at once."""
+    response = await call_next(request)
+    if response.headers.get("content-type", "").startswith("text/html"):
+        response.headers["Cache-Control"] = "no-cache"
+    return response
+
 extractor = SkillExtractor()
 matcher = RoleMatcher()
 search_manager = SearchManager(JobCache(DATA_DIR / "cache" / "jobs.sqlite"))
