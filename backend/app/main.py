@@ -66,6 +66,7 @@ def analyze_text(text: str) -> dict:
             "experience_source": parsed.experience_source,
             "sections_found": [k for k in parsed.sections if k != "header"],
         },
+        "resume_text": parsed.text,
         "skills": [s.to_dict() for s in skills],
         "recommended": by("RECOMMENDED"),
         "stretch": by("STRETCH"),

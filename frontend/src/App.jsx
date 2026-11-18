@@ -22,11 +22,16 @@ export default function App() {
   const [samples, setSamples] = useState([])
   const [dragging, setDragging] = useState(false)
   const [fileName, setFileName] = useState('')
+  const [pdfUrl, setPdfUrl] = useState('')
   const inputRef = useRef(null)
 
   useEffect(() => { listSamples().then(setSamples).catch(() => {}) }, [])
+  // free the old PDF blob whenever a new resume replaces it
+  useEffect(() => () => { if (pdfUrl) URL.revokeObjectURL(pdfUrl) }, [pdfUrl])
 
-  async function run(promise, label) {
+  async function run(promise, label, file) {
+    const isPdf = file && /\.pdf$/i.test(file.name)
+    setPdfUrl(isPdf ? URL.createObjectURL(file) : '')
     setLoading(true); setError(''); setFileName(label)
     try {
       const r = await promise
@@ -41,7 +46,7 @@ export default function App() {
 
   function onFile(file) {
     if (!file) return
-    run(analyzeFile(file), file.name)
+    run(analyzeFile(file), file.name, file)
   }
 
   const current = LANES.find((l) => l.key === lane)
@@ -91,7 +96,8 @@ export default function App() {
       {result && (
         <main className="results">
           <aside className="side">
-            <Profile profile={result.profile} source={fileName} />
+            <Profile profile={result.profile} source={fileName}
+                     resumeText={result.resume_text} pdfUrl={pdfUrl} />
             <SkillList skills={result.skills} />
           </aside>
 
